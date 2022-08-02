@@ -1,0 +1,26 @@
+version: '2.4'
+services:
+
+  ros2-demo-talker:
+    image: ros2-demo
+    build:
+        context: .
+        dockerfile: Dockerfile
+    ipc: host
+    volumes:
+      - .:/workspace/
+    tty: true
+    command: ros2 run demo_nodes_py talker
+
+  ros2-demo-listener:
+    image: ros2-demo
+    build:
+        context: .
+        dockerfile: Dockerfile
+    ipc: host
+    volumes:
+      - .:/workspace/
+    tty: true
+    command: ros2 run demo_nodes_py listener
+
+  
